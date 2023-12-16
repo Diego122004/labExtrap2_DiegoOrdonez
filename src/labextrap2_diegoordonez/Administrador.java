@@ -6,6 +6,7 @@ package labextrap2_diegoordonez;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -30,6 +31,14 @@ static ArrayList<Deporte> sports = new ArrayList();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jpm_listar = new javax.swing.JMenuItem();
+        jpm_mostrar = new javax.swing.JMenuItem();
+        jdia_Listar_equip = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jlist_equi = new javax.swing.JList<>();
+        jdia_most_tabla = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jp_tree = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,6 +61,60 @@ static ArrayList<Deporte> sports = new ArrayList();
         jt_sport_nom = new javax.swing.JTextField();
         jbt_agre = new javax.swing.JButton();
 
+        jpm_listar.setText("jMenuItem1");
+        jpm_listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpm_listarActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jpm_listar);
+
+        jpm_mostrar.setText("jMenuItem2");
+        jPopupMenu1.add(jpm_mostrar);
+
+        jlist_equi.setModel(new DefaultListModel()
+        );
+        jScrollPane2.setViewportView(jlist_equi);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(583, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jdia_Listar_equipLayout = new javax.swing.GroupLayout(jdia_Listar_equip.getContentPane());
+        jdia_Listar_equip.getContentPane().setLayout(jdia_Listar_equipLayout);
+        jdia_Listar_equipLayout.setHorizontalGroup(
+            jdia_Listar_equipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jdia_Listar_equipLayout.setVerticalGroup(
+            jdia_Listar_equipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jdia_most_tablaLayout = new javax.swing.GroupLayout(jdia_most_tabla.getContentPane());
+        jdia_most_tabla.getContentPane().setLayout(jdia_most_tablaLayout);
+        jdia_most_tablaLayout.setHorizontalGroup(
+            jdia_most_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jdia_most_tablaLayout.setVerticalGroup(
+            jdia_most_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -65,6 +128,11 @@ static ArrayList<Deporte> sports = new ArrayList();
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Q4");
         treeNode1.add(treeNode2);
         jt_principal.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_principal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_principalMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jt_principal);
 
         javax.swing.GroupLayout jp_treeLayout = new javax.swing.GroupLayout(jp_tree);
@@ -74,14 +142,14 @@ static ArrayList<Deporte> sports = new ArrayList();
             .addGroup(jp_treeLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(565, Short.MAX_VALUE))
+                .addContainerGap(555, Short.MAX_VALUE))
         );
         jp_treeLayout.setVerticalGroup(
             jp_treeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_treeLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tree", jp_tree);
@@ -121,7 +189,7 @@ static ArrayList<Deporte> sports = new ArrayList();
                     .addComponent(jt_equip_ptn, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_equipoLayout.createSequentialGroup()
-                .addContainerGap(403, Short.MAX_VALUE)
+                .addContainerGap(393, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(331, 331, 331))
         );
@@ -140,7 +208,7 @@ static ArrayList<Deporte> sports = new ArrayList();
                     .addComponent(jt_equip_ptn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Agregar equipo", jp_equipo);
@@ -181,7 +249,7 @@ static ArrayList<Deporte> sports = new ArrayList();
                     .addGroup(jp_torneoLayout.createSequentialGroup()
                         .addGap(318, 318, 318)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(426, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
         jp_torneoLayout.setVerticalGroup(
             jp_torneoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +264,7 @@ static ArrayList<Deporte> sports = new ArrayList();
                     .addComponent(jt_torn_prin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Torneo", jp_torneo);
@@ -235,7 +303,7 @@ static ArrayList<Deporte> sports = new ArrayList();
                     .addGroup(jp_deporteLayout.createSequentialGroup()
                         .addGap(321, 321, 321)
                         .addComponent(jbt_agre, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(398, Short.MAX_VALUE))
+                .addContainerGap(388, Short.MAX_VALUE))
         );
         jp_deporteLayout.setVerticalGroup(
             jp_deporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,12 +314,12 @@ static ArrayList<Deporte> sports = new ArrayList();
                     .addComponent(jt_sport_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71)
                 .addComponent(jbt_agre, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Deporte", jp_deporte);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 400));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -360,10 +428,40 @@ static ArrayList<Deporte> sports = new ArrayList();
         m.reload();
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jt_principalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_principalMouseClicked
+        if (evt.isMetaDown()) {
+            
+           int sec = jt_principal.getRowForLocation(evt.getX(), evt.getY());
+            if (sec >= 0) {
+                jPopupMenu1.show(jt_principal, evt.getX(), evt.getY());
+                
+                
+            }
+            
+        }
+    }//GEN-LAST:event_jt_principalMouseClicked
+
+    private void jpm_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpm_listarActionPerformed
+      
+        jdia_Listar_equip.pack();
+        jdia_Listar_equip.setModal(false);
+        listarList();
+    }//GEN-LAST:event_jpm_listarActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    public void listarList(){
     
+        DefaultListModel modlist = (DefaultListModel)jlist_equi.getModel();
+        modlist.removeAllElements();
+        for (Equipo equipo : equipos) {
+            modlist.addElement(equipo);
+            
+            
+        }jlist_equi.setModel(modlist);
+        
+    }
     public void llenarcom(){
         DefaultComboBoxModel modelcom = (DefaultComboBoxModel)jcom_torn_equi.getModel();
         modelcom.removeAllElements();
@@ -413,14 +511,22 @@ static ArrayList<Deporte> sports = new ArrayList();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jbt_agre;
     private javax.swing.JComboBox<String> jcom_torn_equi;
+    private javax.swing.JDialog jdia_Listar_equip;
+    private javax.swing.JDialog jdia_most_tabla;
+    private javax.swing.JList<String> jlist_equi;
     private javax.swing.JPanel jp_deporte;
     private javax.swing.JPanel jp_equipo;
     private javax.swing.JPanel jp_torneo;
     private javax.swing.JPanel jp_tree;
+    private javax.swing.JMenuItem jpm_listar;
+    private javax.swing.JMenuItem jpm_mostrar;
     private javax.swing.JTextField jt_equip_nom;
     private javax.swing.JTextField jt_equip_ptn;
     private javax.swing.JTree jt_principal;
